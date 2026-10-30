@@ -1,0 +1,30 @@
+name: Проверка комплекта
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  template:
+    name: Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - name: Получить комплект
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Подготовить Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Проверить образец
+        run: python template/scripts/check_project.py --template
+      - name: Проверить создание и защиту проектов
+        run: python -m unittest discover -s tests -v

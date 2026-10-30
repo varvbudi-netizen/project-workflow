@@ -1,0 +1,29 @@
+name: Порядок проекта
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  documents:
+    name: Структура и ссылки
+    runs-on: ubuntu-latest
+    steps:
+      - name: Получить проект
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Подготовить служебный Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Проверить порядок документов
+        run: python scripts/check_project.py
+
+# После выбора технологий добавьте реальные проверки приложения.
+# Защита ветки и обязательность успешного результата настраиваются отдельно.

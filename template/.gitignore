@@ -1,0 +1,41 @@
+# Секреты и местные настройки
+.env
+.env.*
+!.env.example
+!.env.template
+*.secret
+*.token
+*.pem
+*.key
+
+# Зависимости, сборки и временные данные
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.next/
+dist/
+build/
+coverage/
+test-results/
+playwright-report/
+scratch/
+tmp/
+output/
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+
+# Локальные индексы и рабочие каталоги агентов
+.codegraph/
+.serena/
+graphify-out/
+.claude/worktrees/
+.playwright-cli/
+
+# Карточки задач и принятые решения сохраняются в истории проекта.
